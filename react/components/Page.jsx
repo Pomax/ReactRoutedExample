@@ -14,21 +14,36 @@ var elements = (function() {
 
 var Page = React.createClass({
 
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
+  componentWillMount: function(nextProps, nextState) {
+    this.context.router.listenBefore(function(action) {
+      console.log("navigating to: ", action);
+    });
+
+    this.context.router.listenBefore(function(action) {
+      console.log("navigated: ", action);
+    });
+  },
+
   render: function() {
     return (
       <div>
-        <h1>Page harness</h1>
-        <div>
-          <Link to={'list'}>List</Link> - <Link to={'grid'}>Grid</Link> - <Link to={'cloud'}>Cloud</Link>
+        <header>
+          <h1><Link to={'/'}>Page harness that acts as home link</Link></h1>
+        </header>
+        <div className="content">
+          <Sidebar/>
+          <section className="main">
+          {
+            React.cloneElement(this.props.children, {
+              elements: elements
+            })
+          }
+          </section>
         </div>
-        <Sidebar/>
-        <section className="main">
-        {
-          React.cloneElement(this.props.children, {
-            elements: elements
-          })
-        }
-        </section>
       </div>
     );
   }

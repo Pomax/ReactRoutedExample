@@ -1,5 +1,45 @@
 html, body {
   height: 100%;
+}
+
+html, body, p, ol, ul, li {
   margin: 0;
   padding: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+p + p {
+  margin-top: 1em;
+}
+
+header {
+  display: block;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  align-content: stretch;
+}
+
+.sidebar {
+  flex: 0 1;
+  background: rgb(240,240,250);
+  min-width: 10rem;
+  align-self: stretch;
+}
+
+.main {
+  flex: 1 1;
+  background: rgb(245,245,255);
+}
+
+.main ul {
+  font-family: monospace;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
 }

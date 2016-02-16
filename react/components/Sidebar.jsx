@@ -1,18 +1,19 @@
 var React = require('react');
+var Link = require('react-router').Link;
 
 var Sidebar = React.createClass({
   render: function() {
     return (
-      <ul>
-        <li>section 1</li>
-        <li>section 2</li>
-        <li>section 3</li>
-        <li>section 4</li>
-        <li>section 5</li>
-        <li>section 6</li>
-        <li>section 7</li>
-        <li>section 8</li>
-        <li>section 9</li>
+      <ul className="sidebar">
+        <li><Link to={'/section1/'}>section 1</Link></li>
+        <li><Link to={'/section2/'}>section 2</Link></li>
+        <li><Link to={'/section3/'}>section 3</Link></li>
+        <li><Link to={'/section4/'}>section 4</Link></li>
+        <li><Link to={'/section5/'}>section 5</Link></li>
+        <li><Link to={'/section6/'}>section 6</Link></li>
+        <li><Link to={'/section7/'}>section 7</Link></li>
+        <li><Link to={'/section8/'}>section 8</Link></li>
+        <li><Link to={'/section9/'}>section 9</Link></li>
       </ul>
     );
   }

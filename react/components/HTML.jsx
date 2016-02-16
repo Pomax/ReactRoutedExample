@@ -26,7 +26,7 @@ var HTML = React.createClass({
             load after the HTML has been parsed into a DOM, and the app
             will simply hook into that prerendered DOM. Convenient!
           */}
-          <script src="js/bundle.js"></script>
+          <script src="/js/bundle.js"></script>
         </body>
       </html>
     );

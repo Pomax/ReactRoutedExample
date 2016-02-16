@@ -24,6 +24,7 @@
     "eslint": "^2.1.0",
     "eslint-loader": "^1.2.1",
     "eslint-plugin-react": "^3.16.1",
+    "lorem-hipsum": "^0.1.7",
     "npm-run-all": "^1.5.1",
     "randomstring": "^1.1.4",
     "react": "^0.14.7",
