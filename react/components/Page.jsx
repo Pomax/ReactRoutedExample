@@ -14,21 +14,27 @@ var elements = (function() {
 
 var Page = React.createClass({
 
+  getDefaultProps() {
+    return {
+      title: "Our Application"
+    };
+  },
+
   contextTypes: {
     router: React.PropTypes.object
   },
 
-  componentWillMount: function(nextProps, nextState) {
-    this.context.router.listenBefore(function(action) {
-      console.log("navigating to: ", action);
-    });
-
-    this.context.router.listenBefore(function(action) {
-      console.log("navigated: ", action);
-    });
-  },
-
   render: function() {
+    var routedContent = React.cloneElement(this.props.children, {
+      elements: elements
+    });
+
+    if (routedContent.props && typeof document !== "undefined") {
+      var title = routedContent.props.title;
+      if (!title) { title = this.props.title; } else { title = this.props.title + " - " + title; }
+      document.title = title;
+    }
+
     return (
       <div>
         <header>
@@ -37,11 +43,7 @@ var Page = React.createClass({
         <div className="content">
           <Sidebar/>
           <section className="main">
-          {
-            React.cloneElement(this.props.children, {
-              elements: elements
-            })
-          }
+          { routedContent }
           </section>
         </div>
       </div>
