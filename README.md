@@ -14,7 +14,7 @@ The trick here is that we're basically running two apps, one of which can be loa
    HTLM document, by having a React component that has a render() function that
    literally starts with `return <html>.....</html>;`.
    
-The first app gets bundled as a `bundle.js` file, the second app is used by the
+The first app gets bundled as a `bundle.js` file, the second app is used by an
 express server to generate page content for URL, but with one extra bit: in 
 addition to being a full HTML document is also contains a script element
 
