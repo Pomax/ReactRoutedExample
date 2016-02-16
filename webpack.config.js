@@ -14,10 +14,8 @@ var output = {
   publicPath: '/js/',
 };
 
-// necessary if we're uglifying
-var plugins = [];
-
 // Dev: hot reload etc. Prod: compress our bundle.
+var plugins = [];
 if(process.argv.indexOf("--prod") === -1) {
   plugins.push(new webpack.HotModuleReplacementPlugin());
 } else if(process.argv.indexOf("--prod") > -1) {
