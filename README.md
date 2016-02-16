@@ -15,8 +15,8 @@ The trick here is that we're basically running two apps, one of which can be loa
    literally starts with `return <html>.....</html>;`.
    
 The first app gets bundled as a `bundle.js` file, the second app is used by an
-express server to generate page content for URL, but with one extra bit: in 
-addition to being a full HTML document is also contains a script element
+express server to generate page content for any given App URL, but with one extra
+bit. In addition to being a full HTML document is also contains a script element:
 
 `<script src="bundle.js" />`
 
