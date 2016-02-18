@@ -1,5 +1,5 @@
 // shim nodejs so it can load .jsx files
-require('node-jsx').install({harmony: true});
+require(`babel-core/register`);
 var reactRouted = require('./middleware.jsx');
 
 // and a simple server
