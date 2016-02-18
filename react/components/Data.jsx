@@ -24,11 +24,18 @@ var List = React.createClass({
       <div>
         <div>
           <h2>Data view with JS sorting</h2>
-          sorting: <button onClick={this.setSorting}>asc</button> / <button onClick={this.setSorting}>desc</button>
+          <p>
+            Pick your sorting, if JS is enabled:
+            <button onClick={this.setSorting}>asc</button> / <button onClick={this.setSorting}>desc</button>
+          </p>
         </div>
-        <ul>
-        { this.formContent() }
-        </ul>
+
+        <div className="data">
+          <h3>data columns!</h3>
+          <ul>
+          { this.formContent() }
+          </ul>
+        </div>
       </div>
     );
   }
