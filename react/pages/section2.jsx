@@ -1,9 +1,9 @@
-var React = require('react');
-var lorem = require('lorem-hipsum');
+var React = require(`react`);
+var lorem = require(`lorem-hipsum`);
 
 var loroptions = {
   count: 1,
-  units: 'paragraphs',
+  units: `paragraphs`,
   sentenceLowerBound: 5,
   sentenceUpperBound: 15,
   paragraphLowerBound: 9,
@@ -13,7 +13,7 @@ var loroptions = {
 var Section = React.createClass({
   getDefaultProps: function() {
     return {
-      title: "Section the second"
+      title: `Section the second`
     };
   },
 

@@ -1,5 +1,5 @@
-var React = require('react');
-var Link = require('react-router').Link;
+var React = require(`react`);
+var Link = require(`react-router`).Link;
 
 var Sidebar = React.createClass({
   render: function() {
