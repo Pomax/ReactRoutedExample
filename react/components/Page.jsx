@@ -1,22 +1,23 @@
-var React = require('react');
-var Link = require('react-router').Link;
-var Sidebar = require('./Sidebar.jsx');
+var React = require(`react`);
+var Link = require(`react-router`).Link;
+var Sidebar = require(`./Sidebar.jsx`);
 
 var elements = (function() {
-  var randomstring = require('randomstring');
-  var elements = [];
+  var randomstring = require(`randomstring`);
+  var elems = [];
   var i=100;
+
   while(i--) {
-    elements.push(randomstring.generate());
+    elems.push(randomstring.generate());
   }
-  return elements;
+  return elems;
 }());
 
 var Page = React.createClass({
 
   getDefaultProps() {
     return {
-      title: "Our Application"
+      title: `Our Application`
     };
   },
 
@@ -29,9 +30,10 @@ var Page = React.createClass({
       elements: elements
     });
 
-    if (routedContent.props && typeof document !== "undefined") {
+    if (routedContent.props && typeof document !== `undefined`) {
       var title = routedContent.props.title;
-      if (!title) { title = this.props.title; } else { title = this.props.title + " - " + title; }
+
+      if (!title) { title = this.props.title; } else { title = this.props.title + ` - ` + title; }
       document.title = title;
     }
 

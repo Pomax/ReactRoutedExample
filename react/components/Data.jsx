@@ -1,21 +1,23 @@
-var React = require('react');
+var React = require(`react`);
 
 var List = React.createClass({
 
   getInitialState() {
     return {
-      sort: "asc"
+      sort: `asc`
     };
   },
 
   setSorting: function(evt) {
     var origin = evt.target;
+
     this.setState({sort: origin.textContent});
   },
 
   formContent: function() {
     var sorted = this.props.elements.sort();
-    if (this.state.sort === "desc") sorted.reverse();
+
+    if (this.state.sort === `desc`) { sorted.reverse(); }
     return sorted.map(s => <li key={s}>{s}</li>);
   },
 
