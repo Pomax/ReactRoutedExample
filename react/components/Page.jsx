@@ -11,7 +11,7 @@ var elements = (function() {
     elems.push(randomstring.generate());
   }
   return elems;
-})();
+}());
 
 var Page = React.createClass({
 
