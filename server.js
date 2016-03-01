@@ -1,6 +1,6 @@
 // shim nodejs so it can load .jsx files
 require('node-jsx').install({harmony: true});
-var reactRouted = require('./middleware.jsx');
+var reactRouted = require('./react-routed.jsx');
 
 // and a simple server
 var express = require('express');

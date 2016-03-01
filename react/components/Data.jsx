@@ -1,4 +1,5 @@
 var React = require('react');
+var CircleTree = require('./circletree');
 
 var List = React.createClass({
 
@@ -29,6 +30,8 @@ var List = React.createClass({
             <button onClick={this.setSorting}>asc</button> / <button onClick={this.setSorting}>desc</button>
           </p>
         </div>
+
+        <CircleTree />
 
         <div className="data">
           <h3>data columns!</h3>

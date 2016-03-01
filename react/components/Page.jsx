@@ -38,7 +38,7 @@ var Page = React.createClass({
     return (
       <div>
         <header>
-          <h1><Link to={'/'}>Page harness that acts as home link</Link></h1>
+          <h1><Link to={'/'}>Page top title</Link></h1>
         </header>
         <div className="content">
           <Sidebar/>
