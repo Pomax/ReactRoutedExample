@@ -1,7 +1,5 @@
 var React = require('react');
 var CircleSegment = require('./CircleSegment.jsx');
-
-var color = require('./colors');
 var BBox = require('./bbox');
 
 var defaultProps = {
@@ -20,14 +18,14 @@ var CircleTree = React.createClass({
   getInitialState() {
     return {
       data: this.props.data,
+      label: Object.keys(this.props.data)[0],
       bbox: (new BBox()).grow({x: 0, y: 0})
     };
   },
 
   componentWillMount() {
     this.setState({
-      segments: this.formSegments(),
-      label: Object.keys(this.props.data)[0]
+      segments: this.formSegments()
     });
   },
 
@@ -36,7 +34,7 @@ var CircleTree = React.createClass({
   },
 
   formSegments() {
-    var label = Object.keys(this.props.data)[0],
+    var label = this.state.label,
         data = this.props.data[label],
         props = Object.assign({}, this.props, {
           r2: this.props.radius,
