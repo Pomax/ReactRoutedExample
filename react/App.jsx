@@ -13,7 +13,6 @@ var Router = ReactRouter.Router;
 // so we get the route generating function, and then tell it to
 // use Page.jsx as root, through which everything else gets
 // generated:
-var Page = require('./components/Page.jsx');
-var routes = require('./routes/routes.jsx')(Page);
+var routes = require('./routes/routes.jsx');
 
 ReactDOM.render(<Router routes={routes} history={browserHistory} />, document.getElementById('app'));

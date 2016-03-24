@@ -1,14 +1,14 @@
+// Boilerplate requirements
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
-
 var ReactRouter = require('react-router');
 var RouterContext = ReactRouter.RouterContext;
 
-// Using a server response we don't have an "index.html", so instead of
-// generating a <Page>...</Page> like we do over in App.jsx, we actually
-// use a component that wraps a <Page/> with a full HTML document:
+// The all important route information
+var routes = require('./react/routes/routes.jsx');
+
+// We'll use this for static markup generation
 var HTML = require('./react/components/HTML.jsx');
-var routes = require('./react/routes/routes.jsx')(HTML);
 
 module.exports = function(req, res, next) {
   var location = req.url;
@@ -29,18 +29,21 @@ module.exports = function(req, res, next) {
     // This is the most interesting part: we have content that React can render.
     else if (renderProps) {
       // renderToString() generates React-properties-enriched HTML that a
-      // React app can be loaded into. There's also renderToStaticMarkup(),
-      // but that generates HTML without any React properties, so that _would_
-      // get wiped if the HTML contains a <script> element that tries to load
-      // the bundle for hooking into the DOM.
-      var html = ReactDOMServer.renderToString(<RouterContext {...renderProps} />);
+      // React app can be loaded into.
+      var reactHTML = ReactDOMServer.renderToString(<RouterContext {...renderProps} />);
+
+      // We then wrap this "active" HTML code with a "passive" HTML wrapper,
+      // so that we can serve pages that look right, but still end with a <script>
+      // load instruction that sees the app bundle trying to hook into the
+      // "active" HTML part of the page.
+      var htmlWrapper = ReactDOMServer.renderToStaticMarkup(<HTML reactHTML={reactHTML} />);
 
       // And to be good citizens of the web, we need a doctype, which React
       // cannot generate for us because exclamation points are funny.
       var doctype = "<!doctype html>";
 
       // Finally, send a full HTML document over to the client
-      res.status(200).type('text/html').send(doctype + html);
+      res.status(200).type('text/html').send(doctype + htmlWrapper);
     }
 
     // of course if this didn't have an error, nor a known redirect,
